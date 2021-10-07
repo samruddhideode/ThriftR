@@ -1,9 +1,27 @@
 const express = require('express')
-const app = express();
-const connectDB = require('./database/db')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
 
+const connectDB = require('./database/db')
 connectDB();
 
-const port = process.env.PORT || 5000;
+const app = express();
+app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.set('view engine', 'ejs')
 
-app.listen(port, () => console.log(`Listening on ${ port }`));
+//routes
+app.get("/", function (req, res) {
+    res.render('index', { error: '' })
+})
+
+const controller = require('./controllers/user_controller')
+
+app.post("/signup", controller.signup)
+app.post("/new_store", controller.new_store)
+app.post("/login", controller.login)
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Listening on ${port}`));
