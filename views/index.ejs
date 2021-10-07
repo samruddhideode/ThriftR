@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <% if (error!='' ){ %>
+            <div class="alert alert-success">
+                <strong>Wrong Credentials!</strong>
+                <%= error %>
+            </div>
+            <% } %>
+                <h2>Sign up</h2>
+                <!--add validations-->
+                <form method="post" action="/signup" class="needs-validation" novalidate>
+
+                    <label for="name">Name:</label><br>
+                    <input type="text" class="form-control" name="name"><br>
+
+                    <label for="email">Email:</label><br>
+                    <input type="text" class="form-control" name="email"><br>
+
+                    <label for="phone">Phone:</label><br>
+                    <input type="text" class="form-control" name="phone"><br>
+
+                    <label for="address">Address:</label><br>
+                    <input type="text" class="form-control" name="address"><br>
+
+                    <label for="password">Password:</label><br>
+                    <input type="password" class="form-control" name="password"><br>
+
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                </form>
+
+                <h2>Login</h2>
+                <!--add validations-->
+                <form method="post" action="/login" class="needs-validation" novalidate>
+
+                    <label for="name">Username:</label><br>
+                    <input type="text" class="form-control" name="name"><br>
+
+                    <label for="password">Password:</label><br>
+                    <input type="password" class="form-control" name="password"><br>
+
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                </form>
+
+                <h2>List your store</h2>
+                <!--add validations-->
+                <form method="post" action="/new_store" class="needs-validation" novalidate>
+
+                    <label for="name">Name:</label><br>
+                    <input type="text" class="form-control" name="name"><br>
+
+                    <label for="email">Email:</label><br>
+                    <input type="text" class="form-control" name="email"><br>
+
+                    <label for="phone">Phone:</label><br>
+                    <input type="text" class="form-control" name="phone"><br>
+
+                    <label for="address">Address:</label><br>
+                    <input type="text" class="form-control" name="address"><br>
+
+                    <label for="password">Password:</label><br>
+                    <input type="password" class="form-control" name="password"><br>
+
+                    <button class="btn btn-primary" type="submit">Create</button>
+                </form>
+    </div>
+</body>
+
+</html>
