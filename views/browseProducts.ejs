@@ -14,8 +14,26 @@
     <div class="container">
         <h1 class="text-center">Welcome <%= cust.name %> with <%= cust.email %> !</h1>
         <h3 class="text-center">Here are the products you can select from.</h3>
+
+        <ul>
+            <% for(var i=0; i<store_list.length; i++){ %>
+                <li>
+                    <h4>
+                        <%= store_list[i].store %>
+                    </h4><br>
+                    <% var prod_arr=JSON.stringify(store_list[i].products) %>
+                        <% prod_arr=JSON.parse(prod_arr) %>
+                            <% var item=JSON.stringify(prod_arr) %>
+                                <% item=JSON.parse(item) %>
+                                    <% for( var j=0; j<item.length; j++) { %>
+                                        <%= item[j].item_name %> <br>
+                                            <%= item[j].description %> <br><br>
+                                                <% } %>
+                </li>
+                <% } %>
+        </ul>
     </div>
-    
+
 
 </body>
 

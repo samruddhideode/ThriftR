@@ -22,6 +22,7 @@ app.post("/signup", controller.signup)
 app.post("/new_store", controller.new_store)
 app.post("/login", controller.login)
 app.post("/add_product", controller.add_product)
+//app.get("/show_all_products", controller.show_all_products)
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on ${port}`));

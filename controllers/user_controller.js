@@ -44,7 +44,7 @@ const new_store = (req, res) => {
     }
 }
 
-const login = (req, res, next) => {
+const login = (req, res) => {
     var username = req.body.name
     var password = req.body.password
     customer.find({ name: username }, function (err, cust) {
@@ -59,10 +59,20 @@ const login = (req, res, next) => {
             }
             else {
                 if (cust[0].password == password) {
-                    res.render('browseProducts', {
-                        cust: cust[0]
-                    })
-                    console.log(cust);
+                    //try to put this code in a separate function
+                    store.find({}, function (error, store_list) {
+                        if (error) {
+                            res.render('error')
+                        }
+                        else {
+                            var list = JSON.stringify(store_list)
+                            list = JSON.parse(list)
+                            res.render('browseProducts', {
+                                cust: cust[0],
+                                store_list: list
+                            })
+                        }
+                    });
                 }
                 else {
                     res.render('index', {
@@ -73,6 +83,10 @@ const login = (req, res, next) => {
         }
     })
 }
+
+// const show_all_products = (req, res, next) => {
+
+// }
 
 const add_product = (req, res, next) => {
     var objProduct = {
