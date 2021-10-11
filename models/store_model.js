@@ -1,20 +1,22 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const itemSchema = new Schema({
+const product = new Schema({
     itemID: {
         type: Number
     },
-    name: {
+    item_name: {
         type: String
     },
-    Type: {
+    description: {
         type: String
     }
 })
-
 const UserSchema = new Schema({
     name: {
+        type: String
+    },
+    store: {
         type: String
     },
     email: {
@@ -30,12 +32,10 @@ const UserSchema = new Schema({
         type: String
     },
     products:
-    {
-        type: itemSchema
-    }
+        [product]
 },
     { timestamps: true }
 )
 
 const store_model = mongoose.model('store_model', UserSchema)
-module.exports = store_model
+module.exports = store_model;

@@ -1,18 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const itemSchema = new Schema({
-    itemID: {
-        type: Number
-    },
-    name: {
-        type: String
-    },
-    Type: {
-        type: String
-    }
-})
-
 const UserSchema = new Schema({
     name: {
         type: String
@@ -30,9 +18,11 @@ const UserSchema = new Schema({
         type: String
     },
     cart:
-    {
-        type: itemSchema
-    }
+        [{
+            itemID: Number,
+            item_name: String,
+            Type: String
+        }]
 },
     { timestamps: true }
 )

@@ -5,11 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
 <body>
-    Page where you add different items to your store.
+    <% if (error!='' ){ %>
+        <div class="alert alert-success">
+            <strong>Wrong Credentials!</strong>
+            <%= error %>
+        </div>
+        <% } %>
+
+            <h2 class="text-center">
+                Hey <%= newStore.name %> welcome to your store</h2>
+            <h1 class="text-center">
+                <%= newStore.store %>
+            </h1>
+
+            <div class="container-sm">
+                <% if(newStore.products.length==0) { %>
+                    <h4>Your Shop doesn't have any products!</h4>
+                    <% } %>
+                        <h4>List a new product!</h4>
+                        <form method="post" action="/add_product" class="needs-validation" novalidate>
+                            <label for="username">Name:</label><br>
+                            <input type="text" class="form-control" name="username"><br>
+
+                            <label for="password">Password:</label><br>
+                            <input type="password" class="form-control" name="password"><br>
+
+                            <label for="prod_id">Product ID:</label><br>
+                            <input type="text" class="form-control" name="prod_id"><br>
+
+                            <label for="name">Product Name:</label><br>
+                            <input type="text" class="form-control" name="name"><br>
+
+                            <label for="description">Product Description:</label><br>
+                            <input type="text" class="form-control" name="description"><br>
+
+                            <button class="btn btn-primary" type="submit">Add New Product</button>
+                        </form>
+            </div>
+
+            <div class="container">
+                <!--add cards to display each product-->
+                <% for(let i=0; i<newStore.products.length; i++){ %>
+                    <%= newStore.products[i].item_name %><br>
+                        <%= newStore.products[i].description%><br><br>
+                            <% } %>
+            </div>
+
 </body>
 
 </html>
