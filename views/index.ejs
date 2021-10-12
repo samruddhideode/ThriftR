@@ -7,20 +7,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
     <title>Document</title>
+    <style>
+        body {
+            font-family: 'Abhaya Libre';
+            font-size: 22px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <% if (error!='' ){ %>
-            <div class="alert alert-success">
-                <strong>Wrong Credentials!</strong>
-                <%= error %>
+        <div class="row">
+
+            <div class="col-md-3">
+                <!--navbar-->
+                <div id="mySidenav" class="sidenav">
+                    <a class="navbar-brand promo-title" href="#"
+                        style=" color: white; margin-left: 20%; margin-bottom: 5%;"><img src="/static/images/logo2.jpg"
+                            style="width: 120px; height:120px">
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#" class="nav-link">About</a>
+                        </li>
+                        <li>
+                            <a href="#login" class="nav-link" data-toggle="modal" data-target="#login">Login</a>
+                        </li>
+                        <li>
+                            <a href="#signUp" class="nav-link" data-toggle="modal" data-target="#signUp">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="#newStore" class="nav-link" data-toggle="modal" data-target="#newStore">New
+                                Store</a>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
-            <% } %>
-                <h2>Sign up</h2>
-                <!--add validations-->
+            <div class="col-md-9">
+                <div id="main" class="container">
+                    <% if (error!='' ){ %>
+                        <div class="alert alert-success">
+                            <strong>Wrong Credentials!</strong>
+                            <%= error %>
+                        </div>
+                        <% } %>
+                </div>
+                <h3>WELCOME TO THRIFTR!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque inventore placeat explicabo
+                    voluptas similique, est sequi iste voluptatibus cupiditate tempore.
+                </h3>
+                <div class="gallery" id="gallery">
+                    <div class="row">
+                        <div class="gallery-item">
+                            <div class="content">
+                                <img src="/static/images/skirts/skirt3.jfif" alt="">
+                                <div class="overlay">Preowned skirt from the Bronxe Babe Collection!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/skirts/skirt2.jfif" alt=""></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/jewellery/jewel3.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/tops/top1.jfif" alt=""></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/skirts/skirt1.jfif" alt=""></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/jewellery/jewel2.jpeg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/jewellery/jewel1.jpeg" alt=""></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/tops/top3.jfif" alt=""></div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="content"><img src="/static/images/tops/top2.jfif" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+
+</body>
+
+</html>
+</div>
+</div>
+</div>
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="background-color: #818181;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter Store Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/login" class="needs-validation" novalidate>
+
+                    <label for="name">Username</label><br>
+                    <input type="text" class="form-control" name="name"><br>
+
+                    <label for="password">Password</label><br>
+                    <input type="password" class="form-control" name="password"><br>
+
+                    <button class="btn" type="submit"
+                        style="background-color:white ; color:#0a0a0a; border: 2px solid black">Log
+                        in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter Store Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form method="post" action="/signup" class="needs-validation" novalidate>
 
                     <label for="name">Name:</label><br>
@@ -38,24 +160,26 @@
                     <label for="password">Password:</label><br>
                     <input type="password" class="form-control" name="password"><br>
 
-                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                    <button class="btn" type="submit"
+                        style="background-color:white ; color:#0a0a0a; border: 2px solid black">Log
+                        in</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <h2>Login</h2>
-                <!--add validations-->
-                <form method="post" action="/login" class="needs-validation" novalidate>
-
-                    <label for="name">Username:</label><br>
-                    <input type="text" class="form-control" name="name"><br>
-
-                    <label for="password">Password:</label><br>
-                    <input type="password" class="form-control" name="password"><br>
-
-                    <button class="btn btn-primary" type="submit">Log in</button>
-                </form>
-
-                <h2>List your store</h2>
-                <!--add validations-->
+<div class="modal fade" id="newStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter Store Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form method="post" action="/new_store" class="needs-validation" novalidate>
 
                     <label for="name">Name:</label><br>
@@ -76,9 +200,68 @@
                     <label for="password">Password:</label><br>
                     <input type="password" class="form-control" name="password"><br>
 
-                    <button class="btn btn-primary" type="submit">Create</button>
+                    <button class="btn" type="submit"
+                        style="background-color:white ; color:#0a0a0a; border: 2px solid black">Log
+                        in</button>
                 </form>
+            </div>
+        </div>
     </div>
+</div>
+<script>
+    /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    document.getElementById("mySideNav").innerHTML = openNav();
+    var gallery = document.querySelector('#gallery');
+    var getVal = function (elem, style) { return parseInt(window.getComputedStyle(elem).getPropertyValue(style)); };
+    var getHeight = function (item) { return item.querySelector('.content').getBoundingClientRect().height; };
+    var resizeAll = function () {
+        var altura = getVal(gallery, 'grid-auto-rows');
+        var gap = getVal(gallery, 'grid-row-gap');
+        gallery.querySelectorAll('.gallery-item').forEach(function (item) {
+            var el = item;
+            el.style.gridRowEnd = "span " + Math.ceil((getHeight(item) + gap) / (altura + gap));
+        });
+    };
+    gallery.querySelectorAll('img').forEach(function (item) {
+        item.classList.add('byebye');
+        if (item.complete) {
+            console.log(item.src);
+        }
+        else {
+            item.addEventListener('load', function () {
+                var altura = getVal(gallery, 'grid-auto-rows');
+                var gap = getVal(gallery, 'grid-row-gap');
+                var gitem = item.parentElement.parentElement;
+                gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
+                item.classList.remove('byebye');
+            });
+        }
+    });
+    window.addEventListener('resize', resizeAll);
+    gallery.querySelectorAll('.gallery-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+            item.classList.toggle('full');
+        });
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

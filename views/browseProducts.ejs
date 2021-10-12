@@ -7,20 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/topnav.css">
     <title>Document</title>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="/static/images/logo.png" alt="">
+    </nav>
     <div class="container">
-        <h1 class="text-center">Welcome <%= cust.name %> with <%= cust.email %> !</h1>
-        <h3 class="text-center">Here are the products you can select from.</h3>
-
         <ul>
+            <!---the following code uses a parsable store list coming from /login--->
             <% for(var i=0; i<store_list.length; i++){ %>
                 <li>
                     <h4>
                         <%= store_list[i].store %>
                     </h4><br>
+                    <!---the folowing code converts the product array object of each store into a parsable form and displays it--->
                     <% var prod_arr=JSON.stringify(store_list[i].products) %>
                         <% prod_arr=JSON.parse(prod_arr) %>
                             <% var item=JSON.stringify(prod_arr) %>
@@ -32,9 +35,33 @@
                 </li>
                 <% } %>
         </ul>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="" alt="">
+            </div>
+        </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        document.getElementById("mySideNav").innerHTML = openNav();</script>
 </body>
 
 </html>
