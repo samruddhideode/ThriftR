@@ -4,34 +4,32 @@ const store = require('../models/store_model');
 const signup = (req, res) => { //add validations for email address and phone number
     try {
         let cust = new customer({
-            name: req.body.name,
+            name: req.body.username,
             password: req.body.password,
             email: req.body.email,
             phone: req.body.phone,
             address: req.body.address
         })
-        console.log(cust)
         cust.save()
+        console.log('cust: ', cust);
         store.find({}, function (error, store_list) {
             if (error) {
                 res.render('error')
             }
             else {
-                var list = JSON.stringify(store_list)
-                list = JSON.parse(list)
+                console.log(store_list[0])
                 res.render('browseProducts', {
-                    cust: cust[0],
-                    store_list: list
+                    cust,
+                    store_list
                 })
             }
         });
     }
     finally {
         //console.log(cust)
-        console.log(req.body);
+        console.log('hi')
     }
 }
-
 const new_store = (req, res) => {
     try {
         let newStore = new store({
