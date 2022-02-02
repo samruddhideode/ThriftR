@@ -38,7 +38,7 @@ app.get("/", function (req, res) {
 })
 
 const controller = require('./controllers/user_controller')
-var imgModel = require('./models/image_model');
+//var imgModel = require('./models/image_model');
 const store_model = require('./models/store_model')
 
 app.post("/signup", controller.signup)
@@ -87,3 +87,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on ${port}`));
 
 app.use('/static', express.static('public'));
+
+//npm install gridfs-stream dotenv multer
